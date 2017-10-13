@@ -161,6 +161,34 @@ public class CoursesDB {
         }
     }
 
+    public void updateLectureToZero(int id){
+        try{
+            SQLiteDatabase db = courses.getReadableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(courses.checked,0);
+            String[] whereargs = new String[] {String.valueOf(id)};
+            db.update(courses.TB1name,contentValues,"_id=?",whereargs);
+
+        }catch(SQLException e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void updateLectureToOne(int id){
+        try{
+            SQLiteDatabase db = courses.getReadableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(courses.checked,1);
+            String[] whereargs = new String[] {String.valueOf(id)};
+            db.update(courses.TB1name,contentValues,"_id=?",whereargs);
+
+        }catch(SQLException e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+
     
     static class Courses extends SQLiteOpenHelper{
 
