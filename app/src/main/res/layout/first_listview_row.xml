@@ -8,10 +8,11 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.09"
+        android:layout_weight="0.05"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:text="TextView"
-        android:textSize="30sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="24sp" />
 </LinearLayout>

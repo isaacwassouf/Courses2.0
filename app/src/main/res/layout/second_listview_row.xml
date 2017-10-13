@@ -20,7 +20,7 @@
             android:layout_marginTop="0dp"
             android:text="Change"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@+id/textView3"
+            app:layout_constraintLeft_toRightOf="@+id/textView2"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
