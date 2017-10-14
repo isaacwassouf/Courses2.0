@@ -22,7 +22,6 @@ public class CoursesDB {
     }
 
 
-
     private boolean CourseExist(String coursename){
         boolean res=false;
         SQLiteDatabase db= courses.getReadableDatabase();
@@ -187,7 +186,28 @@ public class CoursesDB {
         }
     }
 
+    public void deleteLecture(int id){
+        try{
+            SQLiteDatabase db = courses.getReadableDatabase();
+            String [] whereargs = new String[] {String.valueOf(id)};
+            db.delete(courses.TB1name,"_id=?",whereargs);
 
+        }catch(SQLException e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void deleteCourse(String courseName){
+        try{
+            SQLiteDatabase db= courses.getReadableDatabase();
+            String[] whereargs = new String[] {courseName};
+            db.delete(courses.TB1name,courses.CourseName+"=?",whereargs);
+            db.delete(courses.TB2name,courses.CourseName+"=?",whereargs);
+
+        }catch(SQLException e){
+            Toast.makeText(context,e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     
     static class Courses extends SQLiteOpenHelper{

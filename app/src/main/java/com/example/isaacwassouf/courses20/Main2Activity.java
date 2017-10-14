@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CursorAdapter;
@@ -95,6 +96,7 @@ public class Main2Activity extends AppCompatActivity {
         public void bindView(View view, Context context, Cursor cursor) {
             CheckBox checkBox = view.findViewById(R.id.checkBox);
             TextView textView = view.findViewById(R.id.textView2);
+            Button button = view.findViewById(R.id.button);
             String lecture= cursor.getString(cursor.getColumnIndexOrThrow("lecture_name"));
             int state=  cursor.getInt(cursor.getColumnIndexOrThrow("is_checked"));
             final int id= cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
@@ -121,6 +123,17 @@ public class Main2Activity extends AppCompatActivity {
                     }
                 }
             });
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                    Db.deleteLecture(id);
+                    populate2list();
+                }
+            });
+
 
         }
     }

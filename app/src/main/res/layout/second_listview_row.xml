@@ -18,7 +18,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="0dp"
-            android:text="Change"
+            android:text="Delete"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/textView2"
             app:layout_constraintRight_toRightOf="parent"
