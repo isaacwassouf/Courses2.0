@@ -93,11 +93,11 @@ public class Main2Activity extends AppCompatActivity {
         }
 
         @Override
-        public void bindView(View view, Context context, Cursor cursor) {
+        public void bindView(View view, final Context context, Cursor cursor) {
             CheckBox checkBox = view.findViewById(R.id.checkBox);
             TextView textView = view.findViewById(R.id.textView2);
             Button button = view.findViewById(R.id.button);
-            String lecture= cursor.getString(cursor.getColumnIndexOrThrow("lecture_name"));
+            final String lecture= cursor.getString(cursor.getColumnIndexOrThrow("lecture_name"));
             int state=  cursor.getInt(cursor.getColumnIndexOrThrow("is_checked"));
             final int id= cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
 
@@ -128,9 +128,28 @@ public class Main2Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Delete Lecture");
+                    builder.setMessage("Do you to delete "+lecture);
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Db.deleteLecture(id);
+                            populate2list();
+                        }
+                    });
 
-                    Db.deleteLecture(id);
-                    populate2list();
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+
+
                 }
             });
 
