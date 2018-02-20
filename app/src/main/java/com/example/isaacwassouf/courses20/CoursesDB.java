@@ -199,7 +199,7 @@ public class CoursesDB {
 
     public void deleteCourse(String courseName){
         try{
-            SQLiteDatabase db= courses.getReadableDatabase();
+            SQLiteDatabase db= courses.getWritableDatabase();
             String[] whereargs = new String[] {courseName};
             db.delete(courses.TB1name,courses.CourseName+"=?",whereargs);
             db.delete(courses.TB2name,courses.CourseName+"=?",whereargs);

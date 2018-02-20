@@ -85,7 +85,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void deleteCourse(MenuItem item) {
 
+          AlertDialog.Builder builder = new AlertDialog.Builder(this);
+          final View view = LayoutInflater.from(this).inflate(R.layout.alert_layout,null);
+          builder.setView(view);
+          final EditText editText = view.findViewById(R.id.editText);
+          builder.setMessage("Enter Course Name");
+          builder.setTitle("Delete Lecture");
+          builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialogInterface, int i) {
+                  String course= editText.getText().toString();
+                  Db.deleteCourse(course);
+                  populateList2();
+              }
+          });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+    }
 
 
     //POPULATE A LISTVIEW WITH A SIMPLECURSORADAPTER
@@ -105,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         customAdapter= new CustomAdapter(this,cursor); // PROBLEM IS HERE!!
         listView.setAdapter(customAdapter);
     }
+
 
 
     class CustomAdapter extends CursorAdapter{
